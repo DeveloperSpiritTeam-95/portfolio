@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base-button-classic-box-shadow-top: 0 1px 0 rgba(255, 255, 255, 0.5);
+  --accent-9: rgba(0, 0, 0, 0.1);
+  --base-button-classic-box-shadow-bottom: 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  html {
+    @apply bg-blue-50 text-blue-950;
+  }
+}
