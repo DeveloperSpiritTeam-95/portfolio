@@ -74,3 +74,30 @@
     @apply border-border;
   }
 }
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(15deg);
+  }
+  80% {
+    transform: rotate(-15deg);
+  }
+  90% {
+    transform: rotate(0deg);
+  }
+}
+
+.wiggle {
+  display: inline-block;
+  animation: wiggle 1.5s;
+  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
+}
