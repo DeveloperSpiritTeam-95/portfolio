@@ -9,6 +9,8 @@ const posts = defineCollection({
     name: z.string(),
     overview: z.string(),
     stack: z.string().array(),
+    imageURL: z.string(),
+    featured: z.boolean().optional().default(false),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);

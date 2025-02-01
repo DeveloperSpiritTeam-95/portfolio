@@ -23,7 +23,7 @@ const AboutSection = () => {
             iterations={1}
             order={1}
             type="highlight"
-            animationDelay={1000}
+            animationDelay={750}
           >
             <span className="inline-flex items-center gap-1">
               <LayoutDashboard className="size-5" />
@@ -36,7 +36,7 @@ const AboutSection = () => {
             color="#FFD65A70"
             iterations={1}
             order={2}
-            animationDelay={1000}
+            animationDelay={750}
             type="highlight"
           >
             <span className="inline-flex items-center gap-1">
@@ -50,7 +50,7 @@ const AboutSection = () => {
             color="#5B913B70"
             iterations={1}
             order={4}
-            animationDelay={1000}
+            animationDelay={750}
             type="highlight"
           >
             <span className="inline-flex items-center gap-1">
@@ -64,7 +64,7 @@ const AboutSection = () => {
             color="#EB5A3C70"
             iterations={1}
             order={5}
-            animationDelay={1000}
+            animationDelay={750}
             type="highlight"
           >
             <span className="inline-flex items-center gap-1">
