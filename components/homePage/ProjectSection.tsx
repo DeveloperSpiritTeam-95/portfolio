@@ -1,13 +1,31 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { allProjects, Project } from "content-collections";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
+import { MotionValue, useScroll, useTransform, motion } from "motion/react";
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+  project,
+  scrollYProgress,
+  index,
+}: {
+  project: Project;
+  scrollYProgress: MotionValue;
+  index: number;
+}) => {
+  const targetScale = 1 - (allProjects.length - index) * 0.05;
+  const range = [index * 0.25, 1];
+  const scale = useTransform(scrollYProgress, range, [1, targetScale]);
+
   return (
-    <div className="grid w-full bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max">
+    <motion.div
+      style={{ scale, top: `${(index + 1) * 4}rem` }}
+      className={`grid sticky w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
+    >
       <div className="w-full h-full min-h-72 relative rounded-md overflow-hidden">
         <Image
           src={project.imageURL}
@@ -45,22 +63,31 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <Link href={project._meta.path}>Read more</Link>
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const ProjectSection = () => {
-  console.log({ allProjects });
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
   return (
-    <section className="space-y-4">
+    <section ref={containerRef} className="space-y-4" id="projects">
       <h3 className="font-display text-lg md:text-xl font-semibold">
-        Featured Projects
+        Projects
       </h3>
 
       <div className="space-y-24">
-        {allProjects.map((project) => (
-          <ProjectCard key={project.name} project={project} />
+        {allProjects.map((project, index) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            scrollYProgress={scrollYProgress}
+            index={index}
+          />
         ))}
       </div>
     </section>
