@@ -1,6 +1,11 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import { FadeIn, FadeInStagger } from "../FadeIn";
-import { useId } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const skills = {
   programmingLanguages: [
@@ -436,15 +441,21 @@ const SkillsSection = () => {
             const Component = icon;
 
             return (
-              <FadeIn
-                className="border w-max p-2 rounded shadow-md bg-white"
-                key={label}
-              >
-                <div className="relative">
-                  <Component className="size-6 blur-lg saturate-200" />
-                  <Component className="size-6 absolute inset-0" />
-                </div>
-              </FadeIn>
+              <TooltipProvider key={label}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                      <div className="relative">
+                        <Component className="size-6 blur-lg saturate-200" />
+                        <Component className="size-6 absolute inset-0" />
+                      </div>
+                    </FadeIn>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>{label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </FadeInStagger>
@@ -458,15 +469,21 @@ const SkillsSection = () => {
             const Component = icon;
 
             return (
-              <FadeIn
-                className="border w-max p-2 rounded shadow-md bg-white"
-                key={label}
-              >
-                <div className="relative">
-                  <Component className="size-6 blur-lg saturate-200" />
-                  <Component className="size-6 absolute inset-0" />
-                </div>
-              </FadeIn>
+              <TooltipProvider key={label}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                      <div className="relative">
+                        <Component className="size-6 blur-lg saturate-200" />
+                        <Component className="size-6 absolute inset-0" />
+                      </div>
+                    </FadeIn>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>{label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </FadeInStagger>
@@ -480,15 +497,21 @@ const SkillsSection = () => {
             const Component = icon;
 
             return (
-              <FadeIn
-                className="border w-max p-2 rounded shadow-md bg-white"
-                key={label}
-              >
-                <div className="relative">
-                  <Component className="size-6 blur-lg saturate-200" />
-                  <Component className="size-6 absolute inset-0" />
-                </div>
-              </FadeIn>
+              <TooltipProvider key={label}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                      <div className="relative">
+                        <Component className="size-6 blur-lg saturate-200" />
+                        <Component className="size-6 absolute inset-0" />
+                      </div>
+                    </FadeIn>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>{label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </FadeInStagger>
@@ -502,15 +525,21 @@ const SkillsSection = () => {
             const Component = icon;
 
             return (
-              <FadeIn
-                className="border w-max p-2 rounded shadow-md bg-white"
-                key={label}
-              >
-                <div className="relative">
-                  <Component className="size-6 blur-lg saturate-200" />
-                  <Component className="size-6 absolute inset-0" />
-                </div>
-              </FadeIn>
+              <TooltipProvider key={label}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                      <div className="relative">
+                        <Component className="size-6 blur-lg saturate-200" />
+                        <Component className="size-6 absolute inset-0" />
+                      </div>
+                    </FadeIn>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>{label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </FadeInStagger>

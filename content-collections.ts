@@ -21,6 +21,26 @@ const posts = defineCollection({
   },
 });
 
+const blogs = defineCollection({
+  name: "blogs",
+  directory: "blogs",
+  include: "*.mdx",
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    tags: z.string().array(),
+    imageURL: z.string(),
+    featured: z.boolean().optional().default(false),
+  }),
+  transform: async (document, context) => {
+    const mdx = await compileMDX(context, document);
+    return {
+      ...document,
+      mdx,
+    };
+  },
+});
+
 export default defineConfig({
-  collections: [posts],
+  collections: [posts, blogs],
 });

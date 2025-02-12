@@ -35,7 +35,9 @@ export function FadeIn(
 export function FadeInStagger({
   faster = false,
   ...props
-}: React.ComponentPropsWithoutRef<typeof motion.div> & { faster?: boolean }) {
+}: React.ComponentPropsWithoutRef<typeof motion.div> & {
+  faster?: boolean;
+}) {
   return (
     <FadeInStaggerContext.Provider value={true}>
       <motion.div
