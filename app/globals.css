@@ -101,3 +101,23 @@
   animation: wiggle 1.5s;
   animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
 }
+
+.green-tag {
+  background-color: #b8ffc6;
+}
+
+.red-tag {
+  background-color: #ffa3a3;
+}
+
+.blue-tag {
+  background-color: #94e6ff;
+}
+
+.purple-tag {
+  background-color: #cca3ff;
+}
+
+.yellow-tag {
+  background-color: #fbff93;
+}

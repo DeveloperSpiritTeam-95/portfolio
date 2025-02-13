@@ -1,11 +1,57 @@
 import React from "react";
-import { allBlogs } from "@/.content-collections/generated";
-const BlogSection = () => {
-  console.log({ allBlogs });
+import { allBlogs, Blog } from "@/.content-collections/generated";
+import Image from "next/image";
+import Link from "next/link";
 
+const BlogCard = ({ blog }: { blog: Blog }) => {
+  const { title, tags, imageURL, _meta, description } = blog;
+
+  return (
+    <div key={title}>
+      <div className="px-2 pt-2 pb-7 md:px-3 md:pt-3 bg-white shadow-md rounded-lg">
+        <figure className="relative aspect-video rounded-md overflow-hidden">
+          <Image
+            src={imageURL}
+            alt={`${title} cover image`}
+            fill
+            className="object-cover"
+          />
+        </figure>
+      </div>
+
+      <Link
+        href={`blogs/${_meta.path}`}
+        className="font-display mt-4 block font-semibold hover:text-brandPrimary transition-colors"
+      >
+        {title}
+      </Link>
+
+      <p className="text-br">{description}</p>
+
+      <div className="mt-1">
+        {tags.map(({ color, name }) => (
+          <span
+            className={`${color}-tag px-3 py-1 text-sm shadow-md`}
+            key={name}
+          >{`# ${name}`}</span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const BlogSection = () => {
   return (
     <section className="space-y-4">
       <h3 className="font-display text-lg md:text-xl font-semibold">Blogs</h3>
+
+      <div className="grid grid-cols-2 gap-6">
+        {allBlogs.length
+          ? allBlogs.map((blog) => {
+              return <BlogCard blog={blog} key={blog.title} />;
+            })
+          : null}
+      </div>
     </section>
   );
 };

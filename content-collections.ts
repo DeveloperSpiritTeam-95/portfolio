@@ -28,9 +28,16 @@ const blogs = defineCollection({
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
-    tags: z.string().array(),
     imageURL: z.string(),
     featured: z.boolean().optional().default(false),
+    tags: z
+      .object({
+        name: z.string(),
+        color: z
+          .enum(["yellow", "red", "green", "purple", "blue"])
+          .default("yellow"),
+      })
+      .array(),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);
