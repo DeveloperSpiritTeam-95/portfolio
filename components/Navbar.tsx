@@ -82,9 +82,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="flex flex-row items-center gap-2">
+              <Link href="/blogs" className="flex flex-row items-center gap-2">
                 <Rss size={20} />
-                Blog
+                Blogs
               </Link>
             </li>
             <li>
@@ -112,9 +112,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/blog" className="flex flex-row items-center gap-2">
+          <Link href="/blogs" className="flex flex-row items-center gap-2">
             <Rss size={20} />
-            Blog
+            Blogs
           </Link>
         </li>
         <li>

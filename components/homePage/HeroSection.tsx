@@ -9,7 +9,7 @@ import TextRotate from "../TextRotate";
 
 const HeroSection = () => {
   return (
-    <section className="py-16 grid">
+    <section className="pt-6 pb-16 grid">
       <div>
         <figure className="px-2 pt-2 pb-3 md:px-3 md:pt-3 bg-white w-max rounded-lg mb-8 -rotate-3 shadow-md">
           <Image
@@ -43,7 +43,7 @@ const HeroSection = () => {
           <Link
             href="https://www.synycs.com/"
             target="_blank"
-            className="inline-flex gap-1 h-max leading-none translate-y-0.5 md:-translate-y-0.5 underline"
+            className="inline-flex gap-1 hover:text-brandPrimary transition-colors h-max leading-none translate-y-0.5 md:-translate-y-0.5 underline"
           >
             <SynycsLogo />
             Syncs

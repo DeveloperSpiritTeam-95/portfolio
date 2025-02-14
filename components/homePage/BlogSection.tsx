@@ -40,14 +40,24 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
   );
 };
 
-const BlogSection = () => {
+const BlogSection = ({
+  featured = false,
+  title = "",
+}: {
+  featured?: boolean;
+  title: string;
+}) => {
+  const filteredBlogs = featured
+    ? allBlogs.filter((blog) => blog.featured)
+    : allBlogs;
+
   return (
     <section className="space-y-4">
-      <h3 className="font-display text-lg md:text-xl font-semibold">Blogs</h3>
+      <h3 className="font-display text-lg md:text-xl font-semibold">{title}</h3>
 
-      <div className="grid grid-cols-2 gap-6">
-        {allBlogs.length
-          ? allBlogs.map((blog) => {
+      <div className="grid md:grid-cols-2 gap-6">
+        {filteredBlogs.length
+          ? filteredBlogs.map((blog) => {
               return <BlogCard blog={blog} key={blog.title} />;
             })
           : null}

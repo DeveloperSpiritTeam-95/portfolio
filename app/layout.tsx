@@ -35,7 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-body antialiased`}
       >
         <Navbar />
-        <main className="container space-y-24">{children}</main>
+        <main className="container space-y-24 mt-10">{children}</main>
         <Footer />
       </body>
     </html>

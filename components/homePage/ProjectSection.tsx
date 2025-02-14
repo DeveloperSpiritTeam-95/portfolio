@@ -60,28 +60,36 @@ const ProjectCard = ({
         </div>
 
         <Button size="sm" asChild>
-          <Link href={project._meta.path}>Read more</Link>
+          <Link href={`projects/${project._meta.path}`}>Read more</Link>
         </Button>
       </div>
     </motion.div>
   );
 };
 
-const ProjectSection = () => {
+const ProjectSection = ({
+  featured = false,
+  title,
+}: {
+  featured?: boolean;
+  title: string;
+}) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
+  const filteredProjects = featured
+    ? allProjects.filter((project) => project.featured)
+    : allProjects;
+
   return (
     <section ref={containerRef} className="space-y-4" id="projects">
-      <h3 className="font-display text-lg md:text-xl font-semibold">
-        Projects
-      </h3>
+      <h3 className="font-display text-lg md:text-xl font-semibold">{title}</h3>
 
       <div className="space-y-24">
-        {allProjects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <ProjectCard
             key={project.name}
             project={project}

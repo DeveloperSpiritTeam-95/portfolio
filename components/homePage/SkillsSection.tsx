@@ -436,7 +436,7 @@ const SkillsSection = () => {
       <div>
         <p>Programming Languages</p>
 
-        <FadeInStagger className="mt-2 flex w-full gap-2">
+        <FadeInStagger className="mt-2 flex w-full gap-2 flex-wrap">
           {skills.programmingLanguages.map(({ icon, label }) => {
             const Component = icon;
 
@@ -444,10 +444,10 @@ const SkillsSection = () => {
               <TooltipProvider key={label}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white">
                       <div className="relative">
-                        <Component className="size-6 blur-lg saturate-200" />
-                        <Component className="size-6 absolute inset-0" />
+                        <Component className="size-12 blur-lg saturate-200" />
+                        <Component className="size-12 absolute inset-0" />
                       </div>
                     </FadeIn>
                   </TooltipTrigger>
@@ -472,10 +472,10 @@ const SkillsSection = () => {
               <TooltipProvider key={label}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white">
                       <div className="relative">
-                        <Component className="size-6 blur-lg saturate-200" />
-                        <Component className="size-6 absolute inset-0" />
+                        <Component className="size-12 blur-lg saturate-200" />
+                        <Component className="size-12 absolute inset-0" />
                       </div>
                     </FadeIn>
                   </TooltipTrigger>
@@ -500,10 +500,10 @@ const SkillsSection = () => {
               <TooltipProvider key={label}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white">
                       <div className="relative">
-                        <Component className="size-6 blur-lg saturate-200" />
-                        <Component className="size-6 absolute inset-0" />
+                        <Component className="size-12 blur-lg saturate-200" />
+                        <Component className="size-12 absolute inset-0" />
                       </div>
                     </FadeIn>
                   </TooltipTrigger>
@@ -528,10 +528,10 @@ const SkillsSection = () => {
               <TooltipProvider key={label}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <FadeIn className="border w-max p-2 rounded shadow-md bg-white">
+                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white">
                       <div className="relative">
-                        <Component className="size-6 blur-lg saturate-200" />
-                        <Component className="size-6 absolute inset-0" />
+                        <Component className="size-12 blur-lg saturate-200" />
+                        <Component className="size-12 absolute inset-0" />
                       </div>
                     </FadeIn>
                   </TooltipTrigger>

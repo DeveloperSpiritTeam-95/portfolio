@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <ProjectSection />
+      <ProjectSection title="Featured Projects" featured={true} />
       <SkillsSection />
-      <BlogSection />
+      <BlogSection title="Featured Blogs" featured={true} />
     </>
   );
 }
