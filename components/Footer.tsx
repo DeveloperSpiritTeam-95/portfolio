@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="container mt-20 mb-8">
       <div className="flex w-full justify-between">
         <Link href="/" className="text-xl font-semibold">
-          PN
+          PK
         </Link>
 
         <ul className="flex items-center gap-8">

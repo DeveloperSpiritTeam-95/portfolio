@@ -21,14 +21,11 @@ const ProjectCard = ({
   const targetScale = 1 - (allProjects.length - index) * 0.05;
   const range = [index * 0.25, 1];
   const scale = useTransform(scrollYProgress, range, [1, targetScale]);
-  const tabletView = useMediaQuery("(min-width: 768px)");
 
   return (
     <motion.div
-      style={{ ...(tabletView ? { scale, top: `${(index + 1) * 4}rem` } : {}) }}
-      className={`grid ${
-        tabletView ? "sticky" : "block"
-      } w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
+      style={{ scale, top: `${(index + 1) * 4}rem`, position: "sticky" }}
+      className={`grid w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
     >
       <div className="w-full h-full min-h-72 relative rounded-md overflow-hidden">
         <Image

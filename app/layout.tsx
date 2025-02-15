@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navbar />
         <main className="relative container space-y-24 mt-10">{children}</main>
         <Footer />
+        <Toaster richColors />
       </body>
     </html>
   );
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Prabhakar Kimavath",
     images: [
       {
-        url: `/og-image.png`,
+        url: `/og-image.webp`,
         height: 630,
         width: 1200,
         alt: `og image`,
@@ -64,4 +66,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  icons: {
+    icon: "/profile.webp",
+    shortcut: "/profile.webp",
+    apple: "/profile.webp",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  colorScheme: "light",
 };

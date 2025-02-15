@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Folder, House, Rss, User } from "lucide-react";
+import { Folder, House, Phone, Rss, User } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <header className="container py-2 flex justify-between items-center md:py-4">
       <Link href="/" className="text-xl font-semibold">
-        PN
+        PK
       </Link>
 
       {/* Mobile navigation */}
@@ -72,6 +72,7 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+
             <li>
               <Link
                 href="/projects"
@@ -81,10 +82,21 @@ const Navbar = () => {
                 Projects
               </Link>
             </li>
+
             <li>
               <Link href="/blogs" className="flex flex-row items-center gap-2">
                 <Rss size={20} />
                 Blogs
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/contact"
+                className="flex flex-row items-center gap-2"
+              >
+                <Phone size={20} />
+                Contact
               </Link>
             </li>
           </nav>
@@ -109,6 +121,12 @@ const Navbar = () => {
           <Link href="/blogs" className="flex flex-row items-center gap-2">
             <Rss size={20} />
             Blogs
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact" className="flex flex-row items-center gap-2">
+            <Phone size={20} />
+            Contact
           </Link>
         </li>
       </nav>
