@@ -1,23 +1,144 @@
 ---
-title: "Tips & Tricks to improve spring security"
-description: "Explaining how to improve spring security"
+title: "Tips & Tricks to Improve Security in Spring Boot"
+description: "Explaining how to improve security in Spring Boot"
 tags:
-  - { name: "spring-boot", color: "green" }
+  - { name: "Spring Boot", color: "green" }
 imageURL: "/blogs/tips-&-tricks-to-imporve-spring-security/cover-pic.jpg"
 featured: true
+date: 2025-02-15
 ---
 
-### Heading 3
+Spring Boot is a powerful framework for building Java-based web applications, but security should always be a top priority. In this blog, we will discuss some best practices, tips, and common pitfalls when securing a Spring Boot application.
 
-This is a random description of the blog
+## 1. Secure Application Properties
 
-> Tips and Tricks to improve spring security
+### Tip:
 
-- Item 1
-- Item 2
-- Item 3
+- Store sensitive properties (e.g., database credentials, API keys) in **environment variables** or use **Spring Cloud Config Server**.
+- Use **Jasypt** or **Vault** to encrypt sensitive properties.
 
-```typescript
-// Hello world
-const myName = "prabhakar";
+### Example:
+
+```properties
+# Avoid storing plain-text passwords
+spring.datasource.password={cipher}encrypted_password
 ```
+
+## 2. Enable HTTPS
+
+### Tip:
+
+- Enforce secure communication by using **HTTPS** with TLS.
+- Redirect HTTP requests to HTTPS using **Spring Security**.
+
+### Example:
+
+```properties
+server.port=8443
+server.ssl.key-store=classpath:keystore.jks
+server.ssl.key-store-password=changeit
+server.ssl.key-password=changeit
+```
+
+## 3. Implement Authentication & Authorization
+
+### Tip:
+
+- Use **Spring Security** to manage authentication.
+- Implement **JWT (JSON Web Token)** or **OAuth 2.0** for token-based authentication.
+
+### Example:
+
+```java
+@EnableWebSecurity
+public class SecurityConfig {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated())
+            .formLogin();
+        return http.build();
+    }
+}
+```
+
+## 4. Protect Against CSRF Attacks
+
+### Tip:
+
+- Enable **CSRF protection** if you are using session-based authentication.
+- Use **CSRF tokens** in requests.
+
+### Example:
+
+```java
+http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+```
+
+## 5. Prevent SQL Injection
+
+### Tip:
+
+- Use **Prepared Statements** and **JPA repositories**.
+- Avoid concatenating user inputs directly into queries.
+
+### Example:
+
+```java
+@Query("SELECT u FROM User u WHERE u.username = :username")
+User findByUsername(@Param("username") String username);
+```
+
+## 6. Handle Security Headers
+
+### Tip:
+
+- Configure security headers using **Spring Security**.
+- Use **Content Security Policy (CSP)** to prevent XSS attacks.
+
+### Example:
+
+```java
+http.headers().contentSecurityPolicy("default-src 'self'");
+```
+
+## 7. Avoid Exposing Sensitive Endpoints
+
+### Tip:
+
+- Disable or restrict access to **Actuator endpoints**.
+- Use **management.endpoints.web.exposure.include** selectively.
+
+### Example:
+
+```java
+management.endpoints.web.exposure.include=health,info
+management.endpoint.env.show-values=never
+```
+
+## Common Pitfalls to Avoid
+
+### 1. **Using Default Security Configurations**
+
+- Always **customize Spring Security settings** to match your application’s needs.
+- Change the default **/login** endpoint if needed.
+
+### 2. **Hardcoding Credentials**
+
+- Avoid storing passwords in code. Instead, use environment variables or a secrets manager.
+
+### 3. **Ignoring Dependency Updates**
+
+- Always update dependencies to prevent vulnerabilities.
+- Use tools like **OWASP Dependency Check**.
+
+### 4. **Exposing Too Many Actuator Endpoints**
+
+- Restrict access to management endpoints, especially in production.
+
+## Conclusion
+
+Securing a Spring Boot application requires a combination of best practices and proactive measures. By following these tips, you can reduce security risks and protect your application from common vulnerabilities.
+
+Have additional security tips? Share them in the comments!

@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { MotionValue, useScroll, useTransform, motion } from "motion/react";
+import { useMediaQuery } from "usehooks-ts";
 
 const ProjectCard = ({
   project,
@@ -20,11 +21,14 @@ const ProjectCard = ({
   const targetScale = 1 - (allProjects.length - index) * 0.05;
   const range = [index * 0.25, 1];
   const scale = useTransform(scrollYProgress, range, [1, targetScale]);
+  const tabletView = useMediaQuery("(min-width: 768px)");
 
   return (
     <motion.div
-      style={{ scale, top: `${(index + 1) * 4}rem` }}
-      className={`grid sticky w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
+      style={{ ...(tabletView ? { scale, top: `${(index + 1) * 4}rem` } : {}) }}
+      className={`grid ${
+        tabletView ? "sticky" : "block"
+      } w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
     >
       <div className="w-full h-full min-h-72 relative rounded-md overflow-hidden">
         <Image
@@ -36,11 +40,11 @@ const ProjectCard = ({
       </div>
 
       <div className="space-y-4 md:mt-4">
-        <p className="text-2xl font-display font-semibold">{project.name}</p>
+        <p className="text-2xl font-display font-semibold">{project.title}</p>
         <div className="space-y-4">
           <div>
             <p className="font-display font-semibold">Overview</p>
-            <p className="text-balance text-sm">{project.overview}</p>
+            <p className="text-balance text-sm">{project.description}</p>
           </div>
 
           <div>
@@ -91,7 +95,7 @@ const ProjectSection = ({
       <div className="space-y-24">
         {filteredProjects.map((project, index) => (
           <ProjectCard
-            key={project.name}
+            key={project.title}
             project={project}
             scrollYProgress={scrollYProgress}
             index={index}

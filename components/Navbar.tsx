@@ -87,12 +87,6 @@ const Navbar = () => {
                 Blogs
               </Link>
             </li>
-            <li>
-              <Link href="/about" className="flex flex-row items-center gap-2">
-                <User size={20} />
-                About
-              </Link>
-            </li>
           </nav>
         </SheetContent>
       </Sheet>
@@ -115,12 +109,6 @@ const Navbar = () => {
           <Link href="/blogs" className="flex flex-row items-center gap-2">
             <Rss size={20} />
             Blogs
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" className="flex flex-row items-center gap-2">
-            <User size={20} />
-            About
           </Link>
         </li>
       </nav>

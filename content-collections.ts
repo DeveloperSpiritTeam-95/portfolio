@@ -6,11 +6,13 @@ const posts = defineCollection({
   directory: "projects",
   include: "*.mdx",
   schema: (z) => ({
-    name: z.string(),
-    overview: z.string(),
+    title: z.string(),
+    description: z.string(),
     stack: z.string().array(),
     imageURL: z.string(),
     featured: z.boolean().optional().default(false),
+    // Transform string to Date object
+    date: z.coerce.date(),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);
@@ -38,6 +40,8 @@ const blogs = defineCollection({
           .default("yellow"),
       })
       .array(),
+    // Transform string to Date object
+    date: z.coerce.date(),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);

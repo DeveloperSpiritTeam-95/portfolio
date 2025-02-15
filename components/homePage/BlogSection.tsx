@@ -2,12 +2,13 @@ import React from "react";
 import { allBlogs, Blog } from "@/.content-collections/generated";
 import Image from "next/image";
 import Link from "next/link";
+import { FadeIn, FadeInStagger } from "../FadeIn";
 
 const BlogCard = ({ blog }: { blog: Blog }) => {
   const { title, tags, imageURL, _meta, description } = blog;
 
   return (
-    <div key={title}>
+    <div>
       <div className="px-2 pt-2 pb-7 md:px-3 md:pt-3 bg-white shadow-md rounded-lg">
         <figure className="relative aspect-video rounded-md overflow-hidden">
           <Image
@@ -28,7 +29,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
 
       <p className="text-br">{description}</p>
 
-      <div className="mt-1">
+      <div className="mt-1 flex w-full gap-3">
         {tags.map(({ color, name }) => (
           <span
             className={`${color}-tag px-3 py-1 text-sm shadow-md`}
@@ -55,13 +56,17 @@ const BlogSection = ({
     <section className="space-y-4">
       <h3 className="font-display text-lg md:text-xl font-semibold">{title}</h3>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <FadeInStagger className="grid md:grid-cols-2 gap-6">
         {filteredBlogs.length
           ? filteredBlogs.map((blog) => {
-              return <BlogCard blog={blog} key={blog.title} />;
+              return (
+                <FadeIn key={blog.title}>
+                  <BlogCard blog={blog} />
+                </FadeIn>
+              );
             })
           : null}
-      </div>
+      </FadeInStagger>
     </section>
   );
 };

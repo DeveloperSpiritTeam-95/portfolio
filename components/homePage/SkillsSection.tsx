@@ -444,7 +444,7 @@ const SkillsSection = () => {
               <TooltipProvider key={label}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white">
+                    <FadeIn className="border w-max p-6 rounded shadow-md bg-white ">
                       <div className="relative">
                         <Component className="size-12 blur-lg saturate-200" />
                         <Component className="size-12 absolute inset-0" />

@@ -1,9 +1,125 @@
 ---
-title: "What is Event Driven Architecture"
+title: "What is Java Event-Driven Architecture (EDA)"
 description: "Explaining how Event Driven Architecture works in Java"
 tags:
-  - { name: "java", color: "yellow" }
+  - { name: "Java", color: "yellow" }
+  - { name: "Architecture", color: "purple" }
 imageURL: "/blogs/what-is-event-driven-architecture/cover-pic.jpg"
+date: 2025-02-15
 ---
 
-# Hello there
+## Introduction
+
+Event-Driven Architecture (EDA) is a design pattern that enables systems to respond to events asynchronously. It is widely used in applications where real-time processing, decoupling of components, and scalability are essential.
+
+In Java, EDA is often implemented using event listeners, message queues, or reactive programming frameworks. This blog explores the concept, advantages, disadvantages, and provides a simple Java implementation.
+
+## Advantages of Event-Driven Architecture
+
+1. **Loose Coupling** - Components communicate through events, reducing dependencies and making the system more modular.
+2. **Scalability** - Since components operate independently, they can be scaled individually to handle more events.
+3. **Asynchronous Processing** - Events are processed independently, improving performance in high-load systems.
+4. **Improved Responsiveness** - Applications can react to changes in real time, enhancing user experience.
+5. **Extensibility** - New event handlers can be added without modifying existing code.
+
+## Disadvantages of Event-Driven Architecture
+
+1. **Complex Debugging** - Asynchronous events make tracing errors more difficult.
+2. **Increased Latency** - If event processing queues become overloaded, responses may be delayed.
+3. **Event Ordering Issues** - Handling event sequences can be challenging in distributed systems.
+4. **Difficult to Manage State** - Since events are independent, maintaining a consistent state requires additional mechanisms.
+
+## Simple Java Implementation
+
+### Step 1: Define the Event Class
+
+```java
+class Event {
+    private final String message;
+
+    public Event(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}
+```
+
+### Step 2: Create an Event Listener Interface
+
+```java
+interface EventListener {
+    void onEvent(Event event);
+}
+```
+
+### Step 3: Implement an Event Publisher
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class EventPublisher {
+    private final List<EventListener> listeners = new ArrayList<>();
+
+    public void subscribe(EventListener listener) {
+        listeners.add(listener);
+    }
+
+    public void publish(Event event) {
+        for (EventListener listener : listeners) {
+            listener.onEvent(event);
+        }
+    }
+}
+```
+
+### Step 4: Implement an Event Subscriber
+
+```java
+class EventSubscriber implements EventListener {
+    private final String name;
+
+    public EventSubscriber(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void onEvent(Event event) {
+        System.out.println(name + " received event: " + event.getMessage());
+    }
+}
+```
+
+### Step 5: Test the Event-Driven System
+
+```java
+public class EventDrivenExample {
+    public static void main(String[] args) {
+        EventPublisher publisher = new EventPublisher();
+
+        EventSubscriber subscriber1 = new EventSubscriber("Subscriber 1");
+        EventSubscriber subscriber2 = new EventSubscriber("Subscriber 2");
+
+        publisher.subscribe(subscriber1);
+        publisher.subscribe(subscriber2);
+
+        publisher.publish(new Event("Hello, Event-Driven World!"));
+    }
+}
+```
+
+### Output
+
+```bash
+Subscriber 1 received event: Hello, Event-Driven World!
+Subscriber 2 received event: Hello, Event-Driven World!
+```
+
+## Conclusion
+
+Event-Driven Architecture (EDA) in Java enables better scalability, decoupling, and responsiveness but introduces challenges in debugging and state management. By implementing a simple event publisher-subscriber model, we can leverage EDA principles for more efficient and modular applications.
+
+Would you consider using EDA in your next Java project? Let us know your thoughts!
