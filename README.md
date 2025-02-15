@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
+## Local Development
 
 First, run the development server:
 
+1. Install `pnpm` check docs: https://pnpm.io/installation
+
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Once pnpm is installed, install dependencies👇
+pnpm i
+
+# Once it's done start local-server
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Once done with all changes run build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Run build and check if any error exsists or not
+pnpm run build
+```
 
-## Learn More
+3. Create a `.env` file from `.env.example` file add all the API keys required
 
-To learn more about Next.js, take a look at the following resources:
+## Folder Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+root
+ |-app (check nextjs docs https://nextjs.org/docs/app/getting-started/project-structure)
+ |-components
+ |-lib
+ |-blogs
+ |-projects
+ |-public
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Creating new Blog or Project
 
-## Deploy on Vercel
+```
+root
+ |-blogs
+ |-projects
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. You'll have blogs & projects folders in your root directory
+2. To create a new blog create a new `mdx` file in blogs folder example👇
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+root
+ |-blogs
+ |  |-my-new-blog.mdx
+ |-projects
+```
+
+3. Make sure the name of file should have only alpha-numeric values seperated by `- hypens` don't use special characters or spaces ex: `my-new-blog.mdx`
+4. You can write blog in markdown
+
+```mdx
+---
+title: "My new blog"
+description: "Random description for my new blog"
+tags:
+  - { name: "tag", color: "green" }
+imageURL: "/cover-pic.jpg"
+featured: true
+date: 2025-02-15
+---
+
+# Hello this is my new blog
+```
+
+5. For adding new fields to blog or project collection check `content-collections.ts` file
+6. Follow same process for creating a project also
+
+## Reference Docs
+
+- [shadcn](https://ui.shadcn.com/)
+- [tailwindcss](https://v3.tailwindcss.com/)
+- [nextjs server-actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)

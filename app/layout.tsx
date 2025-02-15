@@ -29,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} relative font-body antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-body antialiased`}
       >
         <Navbar />
-        <main className="relative container space-y-24 mt-10">{children}</main>
+        <main className="container space-y-24 mt-10">{children}</main>
         <Footer />
         <Toaster richColors />
       </body>

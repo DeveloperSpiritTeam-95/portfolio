@@ -20,7 +20,7 @@ export const components: MDXComponents = {
         <div className="relative">
           <CopyCode code={children.props.children} />
         </div>
-        <CodeBlock children={children.props.children} lang={lang} />
+        <CodeBlock lang={lang}>{children.props.children}</CodeBlock>
       </>
     );
   },

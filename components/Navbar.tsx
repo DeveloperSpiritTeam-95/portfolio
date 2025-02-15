@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Folder, House, Phone, Rss, User } from "lucide-react";
+import { Folder, House, Phone, Rss } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
