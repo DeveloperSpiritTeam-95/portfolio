@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -62,8 +63,10 @@ const Navbar = () => {
 
         <SheetContent>
           <SheetHeader>
-            <SheetTitle className="sr-only">Navigation</SheetTitle>
+            <SheetTitle className="sr-only">Navbar</SheetTitle>
           </SheetHeader>
+
+          <SheetDescription className="sr-only">Navbar</SheetDescription>
 
           <nav className="list-none grid gap-4 mt-8">
             <li>

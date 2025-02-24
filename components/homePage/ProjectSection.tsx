@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { MotionValue, useScroll, useTransform, motion } from "motion/react";
-import { useMediaQuery } from "usehooks-ts";
 
 const ProjectCard = ({
   project,
@@ -22,17 +21,10 @@ const ProjectCard = ({
   const range = [index * 0.25, 1];
   const scale = useTransform(scrollYProgress, range, [1, targetScale]);
 
-  // todo: sometimes useMediaQuery hook is working sometimes throwing error
-  const isTablet = useMediaQuery("(min-width: 768px)");
-
   return (
     <motion.div
-      style={{
-        ...(isTablet
-          ? { scale, top: `${(index + 1) * 4}rem`, position: "sticky" }
-          : {}),
-      }}
-      className={`grid w-full shadow-lg bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
+      style={{ top: `${(index + 1) * 4}rem`, scale }}
+      className={`grid w-full shadow-lg md:sticky bg-brandForeground p-4 rounded-xl gap-4 md:grid-cols-2 md:gap-8 h-max`}
     >
       <div className="w-full h-full min-h-72 relative rounded-md overflow-hidden">
         <Image

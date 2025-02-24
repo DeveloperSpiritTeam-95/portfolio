@@ -9,7 +9,10 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
 
   return (
     <div>
-      <div className="px-2 pt-2 pb-7 md:px-3 md:pt-3 bg-white shadow-md rounded-lg">
+      <Link
+        href={`blogs/${_meta.path}`}
+        className="block px-2 pt-2 pb-7 md:px-3 md:pt-3 bg-white shadow-md rounded-lg"
+      >
         <figure className="relative aspect-video rounded-md overflow-hidden">
           <Image
             src={imageURL}
@@ -18,7 +21,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
             className="object-cover"
           />
         </figure>
-      </div>
+      </Link>
 
       <Link
         href={`blogs/${_meta.path}`}
